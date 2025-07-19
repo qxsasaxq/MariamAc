@@ -354,7 +354,13 @@ p {
   color: #ff5722; /* برتقالي */
 }
 
+.hero h1 {
+  margin-bottom: 0.5rem; /* تقليل المسافة أسفل العنوان */
+}
 
+.hero p {
+  margin-top: 0.5rem; /* تقليل المسافة فوق الفقرة */
+}
 
 body {
   font-family: 'Cairo', sans-serif;
