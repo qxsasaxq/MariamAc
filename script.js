@@ -98,4 +98,67 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }, 5000);  // التغيير كل 5 ثواني
 });
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("bookingFormElement");
+  const successMessage = document.getElementById("successMessage");
 
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const formData = new FormData(form);
+
+    // طباعة البيانات قبل الإرسال
+    for (let pair of formData.entries()) {
+      console.log(pair[0] + ': ' + pair[1]);
+    }
+
+    fetch("https://formspree.io/f/xqalaozy", {
+      method: "POST",
+      headers: { 'Accept': 'application/json' },
+      body: formData
+    })
+    .then(response => {
+      if (response.ok) {
+        form.reset();
+        successMessage.style.display = "block";
+        successMessage.style.color = "green";
+      } else {
+        alert("حدث خطأ في الإرسال، حاول مرة أخرى.");
+      }
+    })
+    .catch(error => {
+      alert("تعذر الاتصال بالخادم.");
+      console.error("Form Error:", error);
+    });
+  });
+});
+// ظهور الأسطر عند التمرير
+function revealFadeLines() {
+  const lines = document.querySelectorAll('.fade-line');
+  lines.forEach(line => {
+    const top = line.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+    if (top < windowHeight - 100) {
+      line.classList.add('visible');
+    }
+  });
+}
+window.addEventListener('scroll', revealFadeLines);
+window.addEventListener('load', revealFadeLines);
+
+// تغيير الألوان تلقائيًا كل 20 ثانية
+const colorList = ['#0066cc', '#009688', '#4caf50', '#e91e63', '#ff9800'];
+let colorIndex = 0;
+
+setInterval(() => {
+  const lines = document.querySelectorAll('.fade-line');
+  colorIndex = (colorIndex + 1) % colorList.length;
+  lines.forEach(line => {
+    line.style.color = colorList[colorIndex];
+  });
+}, 10000); // كل 20 ثانية
