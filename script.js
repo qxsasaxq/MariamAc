@@ -71,3 +71,31 @@ bookingForm.addEventListener('submit', function (e) {
   // إعادة تعيين النموذج
   bookingForm.reset();
 });
+///////////////////////////////////////////////////////////////////////////////////////
+document.addEventListener("DOMContentLoaded", function() {
+  // تحديد العناصر <h5>
+  const headers = document.querySelectorAll('.col-md-4.mb-3 h5'); 
+
+  // الألوان التي سيتم التبديل بينها
+  const colors = [
+    ['#00bcd4', '#0097a7'],  // لون ضمان الجودة
+    ['#ffb74d', '#f57c00'],  // لون صيانة مكيفات
+    ['#ff8a65', '#d32f2f']   // لون تعبئة فريون
+  ];
+
+  // تغيير الألوان كل 5 ثواني
+  setInterval(function() {
+    headers.forEach((header, index) => {
+      // الحصول على اللون الحالي
+      const currentBackground = window.getComputedStyle(header).backgroundColor;
+      
+      // التبديل بين اللونين
+      if (currentBackground === colors[index][0]) {
+        header.style.backgroundColor = colors[index][1];
+      } else {
+        header.style.backgroundColor = colors[index][0];
+      }
+    });
+  }, 5000);  // التغيير كل 5 ثواني
+});
+
