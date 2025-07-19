@@ -209,6 +209,39 @@ button.submit-btn:hover {
   opacity: 1;
   transform: translateY(0);
 }
+/* الألوان الافتراضية */
+.col-md-4.mb-3:nth-child(1) {
+  background-color: #e0f7fa;
+  color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.col-md-4.mb-3:nth-child(2) {
+  background-color: #fff3e0;
+  color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.col-md-4.mb-3:nth-child(3) {
+  background-color: #ffe0b2;
+  color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* تغيير لون العنوان والنص */
+.col-md-4.mb-3 h5 {
+  font-weight: bold;
+}
+
+.col-md-4.mb-3 p {
+  color: #555;
+}
 
 /* --------- Footer --------- */
 .page-footer {
@@ -251,4 +284,39 @@ button.submit-btn:hover {
   .service-box {
     margin-bottom: 20px;
   }
+}
+/* Initial circular styling for <h5> elements */
+.col-md-4.mb-3 h5 {
+  display: inline-block;
+  padding: 15px 30px;    /* Padding to create a circle effect */
+  border-radius: 50%;    /* Makes the element a circle */
+  text-align: center;    /* Center the text inside the circle */
+  color: #fff;           /* White text color */
+  font-weight: bold;    /* Bold text for visibility */
+  font-size: 1.5rem;
+}
+
+/* Initial colors for <h5> elements */
+.col-md-4.mb-3:nth-child(1) h5 {
+  background-color: #00bcd4;  /* Blue */
+}
+
+.col-md-4.mb-3:nth-child(2) h5 {
+  background-color: #ffb74d;  /* Orange */
+}
+
+.col-md-4.mb-3:nth-child(3) h5 {
+  background-color: #ff8a65;  /* Dark Orange */
+}
+p {
+  font-weight: bold; /* جعل خط الـ p عريض تحت الـ h5 */
+  font-size: 1rem;   /* حجم الخط */
+  color: #333;       /* لون النص */
+}
+.custom-lead {
+  color: #0d47a1;          /* لون أزرق داكن (يمكن تغييره مثلاً إلى #e91e63 أو أي لون تريده) */
+  font-family: 'Cairo', sans-serif; /* خط عربي أنيق (أو استخدم Tahoma أو Arial إذا لم تستخدم Google Fonts) */
+  font-weight: bold;
+  font-size: 1.3rem;
+  text-align: center;
 }
