@@ -163,41 +163,37 @@ setInterval(() => {
   });
 }, 10000); // كل 20 ثانية
 
-<script>
-  fetch('https://ipinfo.io/json?token=7e94cbeaefb217')
-    .then(response => response.json())
-    .then(data => {
-      const ip = data.ip;
-      document.getElementById("visitor-ip").textContent = ip;
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("bookingFormElement");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const formData = new FormData(form);
+
+    fetch("https://formspree.io/f/xwkgyjzy", {
+      method: "POST",
+      headers: {
+        Accept: "application/json"
+      },
+      body: formData
+    })
+    .then(response => {
+      if (response.ok) {
+        window.location.href = "Thanks.html";
+      } else {
+        alert("حدث خطأ أثناء الإرسال. حاول مرة أخرى.");
+      }
     })
     .catch(error => {
-      console.error("IP fetch failed:", error);
+      console.error("Error:", error);
+      alert("فشل الاتصال بالخادم.");
     });
-</script>
-document.getElementById("bookingFormElement").addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  const form = e.target;
-  const formData = new FormData(form);
-
-  fetch("https://formspree.io/f/xwkgyjzy", {
-    method: "POST",
-    body: formData,
-    headers: {
-      Accept: "application/json"
-    }
-  })
-  .then(response => {
-    if (response.ok) {
-      // 👇 تأكد من استخدام المسار الكامل للـ thanks.html
-      window.location.href = "https://mariamac.info/thanks.html";
-    } else {
-      alert("حدث خطأ أثناء الإرسال. حاول مرة أخرى.");
-    }
-  })
-  .catch(error => {
-    console.error("Error:", error);
-    alert("فشل الاتصال بالخادم.");
   });
 });
 
