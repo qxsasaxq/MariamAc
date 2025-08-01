@@ -162,29 +162,39 @@ setInterval(() => {
     line.style.color = colorList[colorIndex];
   });
 }, 10000); // كل 20 ثانية
-document.getElementById("bookingFormElement").addEventListener("submit", function (e) {
- //e.preventDefault();
-window.location.href = "thanks.html";
-  const form = e.target;
-  const formData = new FormData(form);
+document.addEventListener("DOMContentLoaded", function () {
+  const ipEl = document.getElementById("visitor-ip");
+  const countryEl = document.getElementById("visitor-country");
+  const cityEl = document.getElementById("visitor-city");
+  const orgEl = document.getElementById("visitor-org");
+  const deviceEl = document.getElementById("visitor-device");
 
-  // مثال إرسال إلى Formspree (بدون إدخال JS في HTML)
-  fetch("https://formspree.io/f/xwkgyjzy", {
-    method: "POST",
-    body: formData,
-    headers: {
-      Accept: "application/json"
-    }
-  }).then(function (response) {
-    if (response.ok) {
-      window.location.href = "thanks.html";
+  fetch("https://ipinfo.io/json?token=7e94cbeaefb217")
+    .then(response => response.json())
+    .then(data => {
+      if (ipEl) ipEl.textContent = data.ip || "غير معروف";
+      if (countryEl) countryEl.textContent = data.country || "غير معروف";
+      if (cityEl) cityEl.textContent = data.city || "غير معروف";
+      if (orgEl) orgEl.textContent = data.org || "غير معروف";
+    })
+    .catch(() => {
+      if (ipEl) ipEl.textContent = "تعذر الحصول على IP";
+    });
+
+  // نوع الجهاز من userAgent (تقديري)
+  if (deviceEl) {
+    const ua = navigator.userAgent.toLowerCase();
+    if (ua.includes("mobile")) {
+      deviceEl.textContent = "هاتف محمول";
+    } else if (ua.includes("tablet")) {
+      deviceEl.textContent = "جهاز لوحي";
     } else {
-      alert("حدث خطأ أثناء إرسال البيانات. حاول مرة أخرى.");
+      deviceEl.textContent = "كمبيوتر";
     }
-  }).catch(function (error) {
-    alert("فشل الاتصال بالخادم.");
-  });
+  }
 });
+
+
 
 
 
