@@ -1,51 +1,40 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <title>تم الحجز بنجاح</title>
-
-  <!-- Google Ads Conversion Code -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16711430315"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-16711430315');
-    gtag('event', 'conversion', {
-      'send_to': 'AW-16711430315/abcDEFghijkLMNOPqrST'
-    });
-  </script>
-
-  <!-- IP Display (optional if needed) -->
-  <script>
-    fetch('https://ipinfo.io/json?token=7e94cbeaefb217')
-      .then(response => response.json())
-      .then(data => {
-        document.getElementById("visitor-ip").textContent = data.ip;
-      });
-  </script>
-
+  <meta charset="UTF-8">
+  <title>شكرًا لتواصلك معنا</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding-top: 100px;
-      background-color: #f9f9f9;
+      background-color: #f5f5f5;
+      font-family: 'Cairo', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
     }
     .box {
-      background-color: #fff;
-      padding: 40px;
+      background: white;
+      padding: 30px;
       border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #009688;
+    }
+    a {
+      margin-top: 20px;
       display: inline-block;
-      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+      color: #0066cc;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
   <div class="box">
-    <h2>شكراً لحجزك. سيتم التواصل معك قريباً.</h2>
-    <p>IP الخاص بك: <strong id="visitor-ip">جارٍ التحميل...</strong></p>
+    <h1>شكرًا لك!</h1>
+    <p>تم استلام طلبك بنجاح. سنتواصل معك قريبًا.</p>
+    <a href="index.html">العودة إلى الصفحة الرئيسية</a>
   </div>
 </body>
 </html>
