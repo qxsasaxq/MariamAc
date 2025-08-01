@@ -162,3 +162,27 @@ setInterval(() => {
     line.style.color = colorList[colorIndex];
   });
 }, 10000); // كل 20 ثانية
+document.getElementById("bookingFormElement").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const formData = new FormData(form);
+
+  // مثال إرسال إلى Formspree (بدون إدخال JS في HTML)
+  fetch("https://formspree.io/f/xwkgyjzy", {
+    method: "POST",
+    body: formData,
+    headers: {
+      Accept: "application/json"
+    }
+  }).then(function (response) {
+    if (response.ok) {
+      window.location.href = "thanks.html";
+    } else {
+      alert("حدث خطأ أثناء إرسال البيانات. حاول مرة أخرى.");
+    }
+  }).catch(function (error) {
+    alert("فشل الاتصال بالخادم.");
+  });
+});
+
