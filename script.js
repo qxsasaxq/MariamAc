@@ -164,7 +164,7 @@ setInterval(() => {
 }, 10000); // كل 20 ثانية
 document.getElementById("bookingFormElement").addEventListener("submit", function (e) {
  //e.preventDefault();
-
+window.location.href = "thanks.html";
   const form = e.target;
   const formData = new FormData(form);
 
@@ -185,5 +185,6 @@ document.getElementById("bookingFormElement").addEventListener("submit", functio
     alert("فشل الاتصال بالخادم.");
   });
 });
+
 
 
