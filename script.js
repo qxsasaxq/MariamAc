@@ -162,37 +162,48 @@ setInterval(() => {
     line.style.color = colorList[colorIndex];
   });
 }, 10000); // كل 20 ثانية
-document.addEventListener("DOMContentLoaded", function () {
-  const ipEl = document.getElementById("visitor-ip");
-  const countryEl = document.getElementById("visitor-country");
-  const cityEl = document.getElementById("visitor-city");
-  const orgEl = document.getElementById("visitor-org");
-  const deviceEl = document.getElementById("visitor-device");
 
-  fetch("https://ipinfo.io/json?token=7e94cbeaefb217")
+<script>
+  fetch('https://ipinfo.io/json?token=7e94cbeaefb217')
     .then(response => response.json())
     .then(data => {
-      if (ipEl) ipEl.textContent = data.ip || "غير معروف";
-      if (countryEl) countryEl.textContent = data.country || "غير معروف";
-      if (cityEl) cityEl.textContent = data.city || "غير معروف";
-      if (orgEl) orgEl.textContent = data.org || "غير معروف";
+      const ip = data.ip;
+      document.getElementById("visitor-ip").textContent = ip;
     })
-    .catch(() => {
-      if (ipEl) ipEl.textContent = "تعذر الحصول على IP";
+    .catch(error => {
+      console.error("IP fetch failed:", error);
     });
+</script>
+document.getElementById("bookingFormElement").addEventListener("submit", function (e) {
+  e.preventDefault();
 
-  // نوع الجهاز من userAgent (تقديري)
-  if (deviceEl) {
-    const ua = navigator.userAgent.toLowerCase();
-    if (ua.includes("mobile")) {
-      deviceEl.textContent = "هاتف محمول";
-    } else if (ua.includes("tablet")) {
-      deviceEl.textContent = "جهاز لوحي";
-    } else {
-      deviceEl.textContent = "كمبيوتر";
+  const form = e.target;
+  const formData = new FormData(form);
+
+  fetch("https://formspree.io/f/xwkgyjzy", {
+    method: "POST",
+    body: formData,
+    headers: {
+      Accept: "application/json"
     }
-  }
+  })
+  .then(response => {
+    if (response.ok) {
+      // 👇 تأكد من استخدام المسار الكامل للـ thanks.html
+      window.location.href = "https://mariamac.info/thanks.html";
+    } else {
+      alert("حدث خطأ أثناء الإرسال. حاول مرة أخرى.");
+    }
+  })
+  .catch(error => {
+    console.error("Error:", error);
+    alert("فشل الاتصال بالخادم.");
+  });
 });
+
+
+
+
 
 
 
