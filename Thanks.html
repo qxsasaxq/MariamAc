@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>تم الحجز بنجاح</title>
+
+  <!-- Google Ads Conversion Code -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16711430315"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-16711430315');
+    gtag('event', 'conversion', {
+      'send_to': 'AW-16711430315/abcDEFghijkLMNOPqrST'
+    });
+  </script>
+
+  <!-- IP Display (optional if needed) -->
+  <script>
+    fetch('https://ipinfo.io/json?token=7e94cbeaefb217')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("visitor-ip").textContent = data.ip;
+      });
+  </script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+      background-color: #f9f9f9;
+    }
+    .box {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      display: inline-block;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>شكراً لحجزك. سيتم التواصل معك قريباً.</h2>
+    <p>IP الخاص بك: <strong id="visitor-ip">جارٍ التحميل...</strong></p>
+  </div>
+</body>
+</html>
