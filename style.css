@@ -1,0 +1,177 @@
+/* الخط العام */
+body {
+  font-family: 'Cairo', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #e6f7ff, #ccf2ff, #b3e5fc);
+  color: #222;
+}
+
+/* تنسيق الرأس داخل المحتوى */
+header {
+  background-color: #ffffffaa;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(6px);
+}
+
+header h1 {
+  margin: 0;
+  color: #0077cc;
+  font-size: 2rem;
+}
+
+/* الحاوية الرئيسية */
+.container {
+  max-width: 850px;
+  margin: auto;
+  padding: 2rem;
+}
+
+/* فواصل بين الأقسام */
+section {
+  margin-bottom: 3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: #0d6efd;
+  margin-bottom: 1rem;
+}
+
+/* أيقونات جانبية */
+.icon {
+  margin-left: 0.5rem;
+}
+
+/* قوائم بدون نقاط مع تأشير بالعلامة الخضراء */
+ul {
+  padding-right: 1.5rem;
+  list-style: none;
+}
+
+ul li::before {
+  content: "✅ ";
+  color: green;
+  margin-left: 0.5rem;
+}
+
+/* نص الفقرات */
+p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+/* زر الحث على الاتصال */
+.cta-button {
+  display: inline-block;
+  background-color: #ff5252;
+  color: white;
+  padding: 0.9rem 1.4rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+  margin-top: 1.5rem;
+}
+
+.cta-button:hover {
+  background-color: #ff2e2e;
+}
+
+/* زر الاتصال الثابت أسفل الشاشة */
+.fixed-call {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #0d6efd;
+  color: white;
+  padding: 0.8rem 1.2rem;
+  border-radius: 50px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 999;
+}
+
+/* تذييل الصفحة */
+footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+  color: #666;
+  background-color: #f0f0f0;
+}
+
+/* شريط التنقل */
+.navbar {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  backdrop-filter: blur(6px);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 110;
+}
+
+/* اسم الموقع في النافبار */
+.navbar-brand {
+  color: #0077cc !important;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* زر القوائم */
+.navbar-toggler {
+  border: none;
+}
+
+/* أيقونة زر القوائم */
+.navbar-toggler-icon {
+  filter: invert(30%);
+}
+
+/* قائمة الروابط */
+.navbar-nav {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+/* روابط القائمة */
+.nav-item .nav-link {
+  color: #0077cc;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+  text-decoration: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+}
+
+/* تأثير التمرير على روابط النافبار */
+.nav-item .nav-link:hover,
+.nav-item .nav-link:focus {
+  background-color: #0077cc;
+  color: white !important;
+  outline: none;
+}
+
+/* محاذاة القائمة (يسار) */
+.navbar-collapse {
+  justify-content: flex-start !important;
+}
+
+/* تصميم القائمة على الشاشات الصغيرة */
+@media (max-width: 991px) {
+  .navbar-nav {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+}
