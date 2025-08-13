@@ -7,7 +7,7 @@ body {
   color: #222;
 }
 
-/* تنسيق الرأس داخل المحتوى */
+/* تنسيق الرأس */
 header {
   background-color: #ffffffaa;
   padding: 1.5rem;
@@ -25,14 +25,14 @@ header h1 {
   font-size: 2rem;
 }
 
-/* الحاوية الرئيسية */
+/* الحاوية */
 .container {
   max-width: 850px;
   margin: auto;
   padding: 2rem;
 }
 
-/* فواصل بين الأقسام */
+/* الفواصل */
 section {
   margin-bottom: 3rem;
 }
@@ -43,30 +43,30 @@ h2 {
   margin-bottom: 1rem;
 }
 
-/* أيقونات جانبية */
+/* الأيقونات */
 .icon {
   margin-left: 0.5rem;
 }
 
-/* قوائم بدون نقاط مع تأشير بالعلامة الخضراء */
-ul {
+/* ✅ تظهر فقط في هذه القائمة */
+.services-list {
   padding-right: 1.5rem;
   list-style: none;
 }
 
-ul li::before {
+.services-list li::before {
   content: "✅ ";
   color: green;
   margin-left: 0.5rem;
 }
 
-/* نص الفقرات */
+/* الفقرات */
 p {
   font-size: 1.1rem;
   line-height: 1.7;
 }
 
-/* زر الحث على الاتصال */
+/* زر CTA */
 .cta-button {
   display: inline-block;
   background-color: #ff5252;
@@ -84,7 +84,7 @@ p {
   background-color: #ff2e2e;
 }
 
-/* زر الاتصال الثابت أسفل الشاشة */
+/* زر الاتصال الثابت */
 .fixed-call {
   position: fixed;
   bottom: 20px;
@@ -99,7 +99,7 @@ p {
   z-index: 999;
 }
 
-/* تذييل الصفحة */
+/* التذييل */
 footer {
   text-align: center;
   padding: 2rem;
@@ -119,7 +119,7 @@ footer {
   z-index: 110;
 }
 
-/* اسم الموقع في النافبار */
+/* اسم الموقع */
 .navbar-brand {
   color: #0077cc !important;
   font-size: 1.8rem;
@@ -127,12 +127,11 @@ footer {
   text-decoration: none;
 }
 
-/* زر القوائم */
+/* زر القائمة */
 .navbar-toggler {
   border: none;
 }
 
-/* أيقونة زر القوائم */
 .navbar-toggler-icon {
   filter: invert(30%);
 }
@@ -144,7 +143,6 @@ footer {
   align-items: center;
 }
 
-/* روابط القائمة */
 .nav-item .nav-link {
   color: #0077cc;
   font-weight: 600;
@@ -153,9 +151,17 @@ footer {
   text-decoration: none;
   padding: 0.4rem 0.8rem;
   border-radius: 6px;
+  display: flex;
+  align-items: center;
 }
 
-/* تأثير التمرير على روابط النافبار */
+/* أيقونات داخل روابط القائمة */
+.nav-link i {
+  margin-left: 0.5rem;
+  font-size: 1.2rem;
+  vertical-align: middle;
+}
+
 .nav-item .nav-link:hover,
 .nav-item .nav-link:focus {
   background-color: #0077cc;
@@ -163,12 +169,7 @@ footer {
   outline: none;
 }
 
-/* محاذاة القائمة (يسار) */
-.navbar-collapse {
-  justify-content: flex-start !important;
-}
-
-/* تصميم القائمة على الشاشات الصغيرة */
+/* Responsive */
 @media (max-width: 991px) {
   .navbar-nav {
     flex-direction: column;
