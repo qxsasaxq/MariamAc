@@ -6,12 +6,10 @@
   <title>مريم للمكيفات</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
   
-  <!-- ربط ملف CSS الخارجي -->
+  <!-- ملفات التنسيق -->
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="styles.css" />
-
-  <!-- روابط Bootstrap (اختياري، إذا تستخدم Bootstrap) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
 </head>
 
@@ -25,15 +23,21 @@
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link" href="index.html">الرئيسية</a></li>
-        <li class="nav-item"><a class="nav-link" href="services.html">الخدمات</a></li>
-        <li class="nav-item"><a class="nav-link" href="تركيب-مكيفات-الخبر.html">من نحن</a></li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.html"><i class="bi bi-house-door-fill"></i> الرئيسية</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="services.html"><i class="bi bi-gear-fill"></i> الخدمات</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="تركيب-مكيفات-الخبر.html"><i class="bi bi-people-fill"></i> من نحن</a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
 
-<!-- هنا باقي محتوى الصفحة -->
+<!-- محتوى الصفحة -->
 
 <div class="container">
   <header>
@@ -47,7 +51,7 @@
 
   <section>
     <h2><span class="icon">🛠️</span> خدماتنا:</h2>
-    <ul>
+    <ul class="services-list">
       <li>تركيب مكيفات سبليت وشباك</li>
       <li>فك ونقل المكيفات</li>
       <li>تنظيف وصيانة شاملة</li>
@@ -76,5 +80,3 @@
 
 </body>
 </html>
-
-
