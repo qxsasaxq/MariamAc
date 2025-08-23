@@ -279,24 +279,34 @@
   <span class="line-3">تواصل معنا عبر واتساب أو اتصل الآن لنصلك في نفس اليوم</span>
 </p>
 
-<section id="bookingForm" class="booking-form container my-5">
+
+	<section id="bookingForm" class="booking-form container my-5">
   <h2 class="mb-4 text-center">احجز خدمتك الآن</h2>
-  <form id="bookingFormElement" action="Thanks.html" method="GET" novalidate>
+  <form action="https://formsubmit.co/qxsasaxq@gmail.com" method="POST">
+    <!-- تحويل لصفحة الشكر -->
+    <input type="hidden" name="_next" value="https://mariamac.info/html/Thanks.html">
+    <!-- تعطيل الكابتشا -->
+    <input type="hidden" name="_captcha" value="false">
+    <!-- موضوع الإيميل -->
+    <input type="hidden" name="_subject" value="📌 حجز جديد من موقع مريم للمكيفات">
+    <!-- ترتيب الحقول -->
+    <input type="hidden" name="_template" value="table">
+
     <div class="mb-3">
       <label for="bookingDate" class="form-label">التاريخ</label>
-      <input type="date" id="bookingDate" name="bookingDate" class="form-control" required>
+      <input type="date" id="bookingDate" name="تاريخ الحجز" class="form-control" required>
     </div>
     <div class="mb-3">
       <label for="bookingTime" class="form-label">الوقت</label>
-      <input type="time" id="bookingTime" name="bookingTime" class="form-control" required>
+      <input type="time" id="bookingTime" name="الوقت" class="form-control" required>
     </div>
     <div class="mb-3">
       <label for="duration" class="form-label">مدة الخدمة (بالساعات)</label>
-      <input type="number" id="duration" name="duration" class="form-control" min="1" max="12" required>
+      <input type="number" id="duration" name="مدة الخدمة" class="form-control" min="1" max="12" required>
     </div>
     <div class="mb-3">
       <label for="serviceType" class="form-label">نوع الخدمة</label>
-      <select id="serviceType" name="serviceType" class="form-select" required>
+      <select id="serviceType" name="نوع الخدمة" class="form-select" required>
         <option value="" disabled selected>اختر نوع الخدمة</option>
         <option value="تركيب">تركيب</option>
         <option value="صيانة">صيانة</option>
@@ -304,22 +314,16 @@
       </select>
     </div>
 
-    <!-- حقل البريد الإلكتروني الوهمي مخفي -->
-    <input type="email" name="_replyto" value="no-reply@example.com" style="display:none;">
-
-    <!-- حقل رقم الهاتف -->
+    <!-- رقم الهاتف -->
     <div class="mb-3">
       <label for="phone" class="form-label">رقم الهاتف</label>
-      <input type="tel" id="phone" name="phone" class="form-control" required pattern="[0-9]{9,15}">
+      <input type="tel" id="phone" name="رقم الهاتف" class="form-control" required pattern="[0-9]{9,15}">
     </div>
 
     <button type="submit" class="btn btn-primary w-100">احجز الآن</button>
   </form>
-
-  <p id="successMessage" class="text-success mt-3" style="display: none;">
-    ✅ تم إرسال الحجز بنجاح. شكراً لتواصلكم!
-  </p>
 </section>
+
 
 
   <!-- الفوتر -->
@@ -331,6 +335,7 @@
   <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
