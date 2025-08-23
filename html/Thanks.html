@@ -1,40 +1,158 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>شكرًا لتواصلك معنا</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>شكرًا لك!</title>
+
+  <!-- Google Tag (Analytics + Ads Conversion Tracking) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17417792715"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    // Google Ads
+    gtag('config', 'AW-17417792715');
+    // Google Analytics
+    gtag('config', 'G-G2YY21ED2S');
+  </script>
+
   <style>
     body {
-      background-color: #f5f5f5;
+      margin: 0;
+      background-color: #000;
+      overflow: hidden;
       font-family: 'Cairo', sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
-    .box {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
     h1 {
-      color: #009688;
+      position: absolute;
+      top: 40%;
+      right: 50%;
+      transform: translate(50%, -50%);
+      font-size: 3em;
+      color: #fff;
+      animation: fadeIn 2s ease-in-out forwards;
+      text-shadow: 2px 2px 10px #f39c12;
+      z-index: 10;
+      text-align: center;
     }
-    a {
-      margin-top: 20px;
-      display: inline-block;
-      color: #0066cc;
+
+    @keyframes fadeIn {
+      0% {opacity: 0; transform: translate(50%, -50%) scale(0.8);}
+      100% {opacity: 1; transform: translate(50%, -50%) scale(1);}
+    }
+
+    a.btn-home {
+      position: absolute;
+      bottom: 40px;
+      right: 50%;
+      transform: translateX(50%);
+      background: #f39c12;
+      color: #fff;
+      padding: 12px 25px;
+      border-radius: 8px;
       text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+      transition: 0.3s;
+      z-index: 10;
+    }
+    a.btn-home:hover {
+      background: #d35400;
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      pointer-events: none;
     }
   </style>
 </head>
 <body>
-  <div class="box">
-    <h1>شكرًا لك!</h1>
-    <p>تم استلام طلبك بنجاح. سنتواصل معك قريبًا.</p>
-    <a href="index.html">العودة إلى الصفحة الرئيسية</a>
-  </div>
+
+  <h1>🎉 تم الإرسال بنجاح! شكرًا لتواصلك معنا 🎊</h1>
+  <a href="index.html" class="btn-home">🏠 العودة للرئيسية</a>
+  <canvas id="canvas"></canvas>
+
+  <!-- (اختياري) صوت احتفال -->
+  <audio id="celebration-sound" autoplay>
+    <source src="https://www.soundjay.com/human/sounds/applause-8.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- تأثير الألعاب النارية -->
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    let particles = [];
+
+    function random(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    class Particle {
+      constructor(x, y, color) {
+        this.x = x;
+        this.y = y;
+        this.radius = random(2, 4);
+        this.color = color;
+        this.speed = random(2, 8);
+        this.angle = random(0, Math.PI * 2);
+        this.alpha = 1;
+      }
+
+      update() {
+        this.x += this.speed * Math.cos(this.angle);
+        this.y += this.speed * Math.sin(this.angle) + 0.5;
+        this.alpha -= 0.015;
+      }
+
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.alpha;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    function launchFirework() {
+      const x = random(100, canvas.width - 100);
+      const y = random(100, canvas.height / 2);
+      const color = `hsl(${Math.floor(random(0, 360))}, 100%, 60%)`;
+      for (let i = 0; i < 50; i++) {
+        particles.push(new Particle(x, y, color));
+      }
+    }
+
+    function animate() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      particles.forEach((p, i) => {
+        p.update();
+        p.draw();
+        if (p.alpha <= 0) particles.splice(i, 1);
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    setInterval(launchFirework, 1500); // إطلاق الألعاب النارية كل ثانيتين
+    animate();
+  </script>
+
 </body>
 </html>
