@@ -72,10 +72,11 @@
   </style>
 </head>
 <body>
-
-  <h1>🎉 تم الإرسال بنجاح! شكرًا لتواصلك معنا 🎊</h1>
-  <a href="https://mariamac.info/index.html" class="btn-home">🏠 العودة للرئيسية</a>
-  <canvas id="canvas"></canvas>
+  
+<h1>🎉 تم الإرسال بنجاح! شكرًا لتواصلك معنا 🎊</h1>
+<p>🚀 سيتم تحويلك تلقائيًا إلى الصفحة الرئيسية خلال 3 ثوانٍ...</p>
+<a href="https://mariamac.info/index.html" class="btn-home">🏠 العودة للرئيسية</a>
+<canvas id="canvas"></canvas>
 
 
 
@@ -150,6 +151,73 @@
     setInterval(launchFirework, 1500); // إطلاق الألعاب النارية كل ثانيتين
     animate();
   </script>
+<script>
+  const canvas = document.getElementById("canvas");
+  const ctx = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  let particles = [];
+
+  class Particle {
+    constructor(x, y, color, radius) {
+      this.x = x;
+      this.y = y;
+      this.color = color;
+      this.radius = radius;
+      this.dx = (Math.random() - 0.5) * 8;
+      this.dy = (Math.random() - 0.5) * 8;
+      this.life = 100;
+    }
+
+    update() {
+      this.x += this.dx;
+      this.y += this.dy;
+      this.life--;
+    }
+
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = this.color;
+      ctx.fill();
+    }
+  }
+
+  function createFirework() {
+    const x = Math.random() * canvas.width;
+    const y = Math.random() * canvas.height / 2;
+    const colors = ["#ff1744", "#fbc02d", "#00e676", "#2979ff", "#d500f9"];
+    for (let i = 0; i < 50; i++) {
+      particles.push(new Particle(x, y, colors[Math.floor(Math.random() * colors.length)], 3));
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach((p, i) => {
+      p.update();
+      p.draw();
+      if (p.life <= 0) {
+        particles.splice(i, 1);
+      }
+    });
+    requestAnimationFrame(animate);
+  }
+
+  setInterval(createFirework, 800);
+  animate();
+
+  window.addEventListener("resize", () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+
+  // ✅ التوجيه التلقائي بعد 3 ثواني
+  setTimeout(() => {
+    window.location.href = "https://mariamac.info/index.html";
+  }, 3000);
+</script>
 
 </body>
 </html>
