@@ -191,6 +191,35 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const lines = document.querySelectorAll('.fade-line');
+  const colors = ['#0066cc', '#28a745', '#ff5722', '#9c27b0', '#ffc107'];
+
+  // كاشف الظهور عبر التمرير
+  function revealLinesOnScroll() {
+    lines.forEach((line, index) => {
+      const rect = line.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100 && !line.classList.contains('visible')) {
+        line.classList.add('visible');
+
+        // بدأ تغيير اللون بعد ظهور العنصر
+        let colorIndex = 0;
+        setInterval(() => {
+          colorIndex = (colorIndex + 1) % colors.length;
+          line.style.color = colors[colorIndex];
+        }, 3000);
+      }
+    });
+  }
+
+  window.addEventListener('scroll', revealLinesOnScroll);
+  window.addEventListener('load', revealLinesOnScroll);
+});
+</script>
+
+
+
 
 
 
