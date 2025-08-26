@@ -137,31 +137,25 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
-// ظهور الأسطر عند التمرير
-function revealFadeLines() {
+document.addEventListener("DOMContentLoaded", () => {
+  const colorList = ['#0066cc', '#009688', '#4caf50', '#e91e63', '#ff9800'];
   const lines = document.querySelectorAll('.fade-line');
-  lines.forEach(line => {
-    const top = line.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
-    if (top < windowHeight - 100) {
-      line.classList.add('visible');
-    }
-  });
-}
-window.addEventListener('scroll', revealFadeLines);
-window.addEventListener('load', revealFadeLines);
 
-// تغيير الألوان تلقائيًا كل 20 ثانية
-const colorList = ['#0066cc', '#009688', '#4caf50', '#e91e63', '#ff9800'];
-let colorIndex = 0;
+  lines.forEach((line, i) => {
+    let index = i % colorList.length;
 
-setInterval(() => {
-  const lines = document.querySelectorAll('.fade-line');
-  colorIndex = (colorIndex + 1) % colorList.length;
-  lines.forEach(line => {
-    line.style.color = colorList[colorIndex];
+    // تأكد من أن أول لون يطبق فورًا
+    line.style.color = colorList[index];
+
+    setInterval(() => {
+      index = (index + 1) % colorList.length;
+      line.style.color = colorList[index];
+    }, 3000); // كل 3 ثواني
   });
-}, 10000); // كل 20 ثانية
+});
+
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("bookingFormElement");
@@ -196,6 +190,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
 
 
 
