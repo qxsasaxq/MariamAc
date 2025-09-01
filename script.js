@@ -137,95 +137,28 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
-document.addEventListener("DOMContentLoaded", () => {
-  const colorList = ['#0066cc', '#009688', '#4caf50', '#e91e63', '#ff9800'];
+// ظهور الأسطر عند التمرير
+function revealFadeLines() {
   const lines = document.querySelectorAll('.fade-line');
-
-  lines.forEach((line, i) => {
-    let index = i % colorList.length;
-
-    // تأكد من أن أول لون يطبق فورًا
-    line.style.color = colorList[index];
-
-    setInterval(() => {
-      index = (index + 1) % colorList.length;
-      line.style.color = colorList[index];
-    }, 3000); // كل 3 ثواني
-  });
-});
-
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("bookingFormElement");
-
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
+  lines.forEach(line => {
+    const top = line.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+    if (top < windowHeight - 100) {
+      line.classList.add('visible');
     }
-
-    const formData = new FormData(form);
-
-    fetch("https://formspree.io/f/xwkgyjzy", {
-      method: "POST",
-      headers: {
-        Accept: "application/json"
-      },
-      body: formData
-    })
-    .then(response => {
-      if (response.ok) {
-        window.location.href = "Thanks.html";
-      } else {
-        alert("حدث خطأ أثناء الإرسال. حاول مرة أخرى.");
-      }
-    })
-    .catch(error => {
-      console.error("Error:", error);
-      alert("فشل الاتصال بالخادم.");
-    });
   });
-});
+}
+window.addEventListener('scroll', revealFadeLines);
+window.addEventListener('load', revealFadeLines);
 
-<script>
-document.addEventListener('DOMContentLoaded', function () {
+// تغيير الألوان تلقائيًا كل 20 ثانية
+const colorList = ['#0066cc', '#009688', '#4caf50', '#e91e63', '#ff9800'];
+let colorIndex = 0;
+
+setInterval(() => {
   const lines = document.querySelectorAll('.fade-line');
-  const colors = ['#0066cc', '#28a745', '#ff5722', '#9c27b0', '#ffc107'];
-
-  // كاشف الظهور عبر التمرير
-  function revealLinesOnScroll() {
-    lines.forEach((line, index) => {
-      const rect = line.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 100 && !line.classList.contains('visible')) {
-        line.classList.add('visible');
-
-        // بدأ تغيير اللون بعد ظهور العنصر
-        let colorIndex = 0;
-        setInterval(() => {
-          colorIndex = (colorIndex + 1) % colors.length;
-          line.style.color = colors[colorIndex];
-        }, 3000);
-      }
-    });
-  }
-
-  window.addEventListener('scroll', revealLinesOnScroll);
-  window.addEventListener('load', revealLinesOnScroll);
-});
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
+  colorIndex = (colorIndex + 1) % colorList.length;
+  lines.forEach(line => {
+    line.style.color = colorList[colorIndex];
+  });
+}, 10000); // كل 20 ثانية
