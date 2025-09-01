@@ -1,4 +1,4 @@
-// --------- آراء العملاء عند التمرير ---------
+// Client reviews reveal on scroll
 function revealClients() {
   const boxes = document.querySelectorAll('.client-box');
   boxes.forEach(box => {
@@ -18,6 +18,7 @@ const slideCount = slides.children.length;
 const dotsContainer = document.getElementById('dots');
 let currentIndex = 0;
 
+// إنشاء نقاط التمرير (dots)
 for (let i = 0; i < slideCount; i++) {
   const dot = document.createElement('span');
   dot.classList.add('dot');
@@ -40,6 +41,7 @@ document.querySelector('.prev').addEventListener('click', () => {
   currentIndex = (currentIndex - 1 + slideCount) % slideCount;
   updateSlider();
 });
+
 document.querySelector('.next').addEventListener('click', () => {
   currentIndex = (currentIndex + 1) % slideCount;
   updateSlider();
@@ -48,83 +50,170 @@ document.querySelector('.next').addEventListener('click', () => {
 // --------- نموذج الحجز ---------
 const bookingForm = document.getElementById('bookingFormElement');
 const successMessage = document.getElementById('successMessage');
-if (successMessage) successMessage.style.display = 'none';
+successMessage.style.display = 'none';
 
 bookingForm.addEventListener('submit', function (e) {
   e.preventDefault();
+
+  // تحقق من صحة النموذج (مبسط)
   if (!bookingForm.checkValidity()) {
     bookingForm.reportValidity();
     return;
   }
-  const formData = new FormData(bookingForm);
-  fetch("https://formspree.io/f/xwkgyjzy", {
-    method: "POST",
-    headers: { Accept: "application/json" },
-    body: formData
-  })
-  .then(response => {
-    if (response.ok) {
-      bookingForm.reset();
-      if (successMessage) {
-        successMessage.style.display = "block";
-        successMessage.style.color = "green";
-      } else {
-        window.location.href = "Thanks.html";
-      }
-    } else {
-      alert("حدث خطأ أثناء الإرسال. حاول مرة أخرى.");
-    }
-  })
-  .catch(error => {
-    console.error("Error:", error);
-    alert("فشل الاتصال بالخادم.");
-  });
-});
 
-// --------- تغيير ألوان H5 تلقائياً ---------
+  // معالجة إرسال البيانات (يمكن تعديلها لتناسب الخادم)
+  const formData = new FormData(bookingForm);
+  console.log('Booking data:', Object.fromEntries(formData.entries()));
+
+  // إظهار رسالة النجاح
+  successMessage.style.display = 'block';
+
+  // إعادة تعيين النموذج
+  bookingForm.reset();
+});
+///////////////////////////////////////////////////////////////////////////////////////
 document.addEventListener("DOMContentLoaded", function() {
+  // تحديد العناصر <h5>
   const headers = document.querySelectorAll('.col-md-4.mb-3 h5'); 
+
+  // الألوان التي سيتم التبديل بينها
   const colors = [
-    ['#00bcd4', '#0097a7'],  
-    ['#ffb74d', '#f57c00'],  
-    ['#ff8a65', '#d32f2f']   
+    ['#00bcd4', '#0097a7'],  // لون ضمان الجودة
+    ['#ffb74d', '#f57c00'],  // لون صيانة مكيفات
+    ['#ff8a65', '#d32f2f']   // لون تعبئة فريون
   ];
+
+  // تغيير الألوان كل 5 ثواني
   setInterval(function() {
     headers.forEach((header, index) => {
+      // الحصول على اللون الحالي
       const currentBackground = window.getComputedStyle(header).backgroundColor;
+      
+      // التبديل بين اللونين
       if (currentBackground === colors[index][0]) {
         header.style.backgroundColor = colors[index][1];
       } else {
         header.style.backgroundColor = colors[index][0];
       }
     });
-  }, 5000);
+  }, 5000);  // التغيير كل 5 ثواني
 });
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("bookingFormElement");
+  const successMessage = document.getElementById("successMessage");
 
-// --------- ظهور fade-line عند التمرير ---------
-function revealFadeLines() {
-  const lines = document.querySelectorAll('.fade-line');
-  lines.forEach(line => {
-    const top = line.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
-    if (top < windowHeight - 100) {
-      line.classList.add('visible');
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
     }
-  });
-}
-window.addEventListener('scroll', revealFadeLines);
-window.addEventListener('load', revealFadeLines);
 
-// --------- تغيير ألوان fade-line كل 3 ثواني ---------
+    const formData = new FormData(form);
+
+    // طباعة البيانات قبل الإرسال
+    for (let pair of formData.entries()) {
+      console.log(pair[0] + ': ' + pair[1]);
+    }
+
+    fetch("https://formspree.io/f/xqalaozy", {
+      method: "POST",
+      headers: { 'Accept': 'application/json' },
+      body: formData
+    })
+    .then(response => {
+      if (response.ok) {
+        form.reset();
+        successMessage.style.display = "block";
+        successMessage.style.color = "green";
+      } else {
+        alert("حدث خطأ في الإرسال، حاول مرة أخرى.");
+      }
+    })
+    .catch(error => {
+      alert("تعذر الاتصال بالخادم.");
+      console.error("Form Error:", error);
+    });
+  });
+});
 document.addEventListener("DOMContentLoaded", () => {
   const colorList = ['#0066cc', '#009688', '#4caf50', '#e91e63', '#ff9800'];
   const lines = document.querySelectorAll('.fade-line');
+
   lines.forEach((line, i) => {
     let index = i % colorList.length;
+
+    // تأكد من أن أول لون يطبق فورًا
     line.style.color = colorList[index];
+
     setInterval(() => {
       index = (index + 1) % colorList.length;
       line.style.color = colorList[index];
-    }, 3000);
+    }, 3000); // كل 3 ثواني
   });
 });
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("bookingFormElement");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const formData = new FormData(form);
+
+    fetch("https://formspree.io/f/xwkgyjzy", {
+      method: "POST",
+      headers: {
+        Accept: "application/json"
+      },
+      body: formData
+    })
+    .then(response => {
+      if (response.ok) {
+        window.location.href = "Thanks.html";
+      } else {
+        alert("حدث خطأ أثناء الإرسال. حاول مرة أخرى.");
+      }
+    })
+    .catch(error => {
+      console.error("Error:", error);
+      alert("فشل الاتصال بالخادم.");
+    });
+  });
+});
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const lines = document.querySelectorAll('.fade-line');
+  const colors = ['#0066cc', '#28a745', '#ff5722', '#9c27b0', '#ffc107'];
+
+  // كاشف الظهور عبر التمرير
+  function revealLinesOnScroll() {
+    lines.forEach((line, index) => {
+      const rect = line.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100 && !line.classList.contains('visible')) {
+        line.classList.add('visible');
+
+        // بدأ تغيير اللون بعد ظهور العنصر
+        let colorIndex = 0;
+        setInterval(() => {
+          colorIndex = (colorIndex + 1) % colors.length;
+          line.style.color = colors[colorIndex];
+        }, 3000);
+      }
+    });
+  }
+
+  window.addEventListener('scroll', revealLinesOnScroll);
+  window.addEventListener('load', revealLinesOnScroll);
+});
+</script>
