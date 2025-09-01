@@ -137,22 +137,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
-document.addEventListener("DOMContentLoaded", () => {
-  const colorList = ['#0066cc', '#009688', '#4caf50', '#e91e63', '#ff9800'];
-  const lines = document.querySelectorAll('.fade-line');
-
-  lines.forEach((line, i) => {
-    let index = i % colorList.length;
-
-    // تأكد من أن أول لون يطبق فورًا
-    line.style.color = colorList[index];
-
-    setInterval(() => {
-      index = (index + 1) % colorList.length;
-      line.style.color = colorList[index];
-    }, 3000); // كل 3 ثواني
-  });
-});
 
 
 
@@ -191,23 +175,21 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-<script>
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", () => {
+  const colorList = ['#0066cc', '#009688', '#4caf50', '#e91e63', '#ff9800'];
   const lines = document.querySelectorAll('.fade-line');
-  const colors = ['#0066cc', '#28a745', '#ff5722', '#9c27b0', '#ffc107'];
 
-  // كاشف الظهور عبر التمرير
   function revealLinesOnScroll() {
-    lines.forEach((line, index) => {
+    lines.forEach((line) => {
       const rect = line.getBoundingClientRect();
       if (rect.top < window.innerHeight - 100 && !line.classList.contains('visible')) {
         line.classList.add('visible');
 
-        // بدأ تغيير اللون بعد ظهور العنصر
-        let colorIndex = 0;
+        // يبدأ تغيير اللون بعد ما يظهر
+        let index = 0;
         setInterval(() => {
-          colorIndex = (colorIndex + 1) % colors.length;
-          line.style.color = colors[colorIndex];
+          index = (index + 1) % colorList.length;
+          line.style.color = colorList[index];
         }, 3000);
       }
     });
@@ -216,4 +198,5 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll', revealLinesOnScroll);
   window.addEventListener('load', revealLinesOnScroll);
 });
-</script>
+
+
