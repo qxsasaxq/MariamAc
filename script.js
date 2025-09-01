@@ -198,5 +198,11 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener('scroll', revealLinesOnScroll);
   window.addEventListener('load', revealLinesOnScroll);
 });
+setInterval(() => {
+  document.querySelectorAll('.fade-line').forEach(el => {
+    el.style.color = el.style.color === 'red' ? 'blue' : 'red';
+  });
+}, 2000);
+
 
 
