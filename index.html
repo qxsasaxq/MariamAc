@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="google-site-verification" content="22T0s9DFviNFAcpfL6C9gWvDakh2orP5hQkJIa-Vji0" />
+  <meta name="google-site-verification" content="22T0s9DFviNFAcpfL6C9gWvDakh2orP5hQkJIa-Vji0" />
+  <title>مريم للمكيفات</title>
 
   <!-- Basic SEO -->
   <title>مريم للمكيفات |نقل وتركيب وتأسيس المكيفات بالدمام</title>
@@ -20,8 +21,9 @@
 
 
   <!-- ملف CSS خارجي -->
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="styles.css" />
 
+  
   <!-- Google Tag -->
 <script type="application/ld+json">
 {
@@ -108,7 +110,6 @@
     </div>
   </div>
 </nav>
-
   <!-- Google Tag Manager (noscript) -->
   <noscript>
     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PNSTM7WH"
@@ -117,8 +118,8 @@
 
   <!-- الشعار -->
   <div class="position-absolute top-0 start-0 m-3 z-3">
-    <img src="logo.png" 
-         class="img-fluid" alt="شعار مريم للمكيفات" style="max-width: 150px;" loading="lazy">
+    <img src="image/logo.png" 
+         class="img-fluid" alt="شعار مريم للمكيفات" style="max-width: 150px;">
   </div>
 
   <!-- البانر -->
@@ -126,10 +127,9 @@
     <div class="overlay-content">
       <h2 class="display-5 fw-bold">احجز خدمتك الآن</h2>
       <a href="#bookingForm" class="custom-book-btn mt-3 d-inline-block"
-         onclick="gtag('event', 'conversion', {'send_to': 'AW-17523018112/abcDEFghijkLMNOPqrST'});">احجز الآن</a>
+         onclick="gtag('event', 'conversion', {'send_to': 'AW-16711430315/abcDEFghijkLMNOPqrST'});">احجز الآن</a>
     </div>
   </div>
-
 
   <!-- أزرار التواصل -->
 <div class="hero" style="margin-top: 0;">
@@ -158,10 +158,8 @@
 </div>
 
 
-	
 
-
-
+    
     <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
       <a href="https://wa.me/966567562010?text=مرحبا%20بكم%20فى%20مؤسسة%20مريم%20للمكيفات%20كيف%20اخدمك%20اليوم؟"
          class="btn btn-success text-white"
@@ -173,6 +171,7 @@
          onclick="gtag('event', 'conversion', {'send_to': 'AW-17523018112/abcDEFghijkLMNOPqrST'});">اتصال مباشر</a>
     </div>
   </div>
+
 
   <!-- وصف الخدمة -->
   <div class="container section">
@@ -186,8 +185,7 @@
  
   </video>
 </section>
-
-  <!-- الخدمات --><div class="container section my-5">
+<!-- الخدمات --><div class="container section my-5">
   <div class="row text-center gy-4">
     <!-- تركيب مكيفات -->
     <div class="col-md-4">
@@ -278,7 +276,7 @@
     </div>
   </div>
 
-  <!-- آراء العملاء -->
+   <!-- آراء العملاء -->
   <div class="container my-5">
     <h2 class="text-center mb-4">آراء عملائنا</h2>
     <div class="row justify-content-center">
@@ -321,9 +319,9 @@
 </p>
 
 
-	<section id="bookingForm" class="booking-form container my-5">
+<section id="bookingForm" class="booking-form container my-5">
   <h2 class="mb-4 text-center">احجز خدمتك الآن</h2>
-  <form  id="bookingFormElement"  action="https://formsubmit.co/qxsasaxq@gmail.com" method="POST">
+    <form id="bookingFormElement" action="https://formsubmit.co/qxsasaxq@gmail.com" method="post">
     <!-- تحويل لصفحة الشكر -->
     <input type="hidden" name="_next" value="https://mariamac.info/html/Thanks.html">
     <!-- تعطيل الكابتشا -->
@@ -332,22 +330,22 @@
     <input type="hidden" name="_subject" value="📌 حجز جديد من موقع مريم للمكيفات">
     <!-- ترتيب الحقول -->
     <input type="hidden" name="_template" value="table">
-
+ 
     <div class="mb-3">
       <label for="bookingDate" class="form-label">التاريخ</label>
-      <input type="date" id="bookingDate" name="تاريخ الحجز" class="form-control" required>
+      <input type="date" id="bookingDate" name="bookingDate" class="form-control" required>
     </div>
     <div class="mb-3">
       <label for="bookingTime" class="form-label">الوقت</label>
-      <input type="time" id="bookingTime" name="الوقت" class="form-control" required>
+      <input type="time" id="bookingTime" name="bookingTime" class="form-control" required>
     </div>
     <div class="mb-3">
       <label for="duration" class="form-label">مدة الخدمة (بالساعات)</label>
-      <input type="number" id="duration" name="مدة الخدمة" class="form-control" min="1" max="12" required>
+      <input type="number" id="duration" name="duration" class="form-control" min="1" max="12" required>
     </div>
     <div class="mb-3">
       <label for="serviceType" class="form-label">نوع الخدمة</label>
-      <select id="serviceType" name="نوع الخدمة" class="form-select" required>
+      <select id="serviceType" name="serviceType" class="form-select" required>
         <option value="" disabled selected>اختر نوع الخدمة</option>
         <option value="تركيب">تركيب</option>
         <option value="صيانة">صيانة</option>
@@ -355,16 +353,20 @@
       </select>
     </div>
 
-    <!-- رقم الهاتف -->
+  
+    <!-- حقل رقم الهاتف -->
     <div class="mb-3">
       <label for="phone" class="form-label">رقم الهاتف</label>
-      <input type="tel" id="phone" name="رقم الهاتف" class="form-control" required pattern="[0-9]{9,15}">
+      <input type="tel" id="phone" name="phone" class="form-control" required pattern="[0-9]{9,15}">
     </div>
 
-    <button type="submit" class="btn btn-primary w-100">احجز معنا الآن</button>
+    <button type="submit" class="btn btn-primary w-100">احجز الآن</button>
   </form>
-</section>
 
+  <p id="successMessage" class="text-success mt-3" style="display: none;">
+    ✅ تم إرسال الحجز بنجاح. شكراً لتواصلكم!
+  </p>
+</section>
 
 
   <!-- الفوتر -->
@@ -373,12 +375,6 @@
   </footer>
 
   <!-- ملف JS خارجي -->
-  <script src="script.js" ></script>
+  <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
